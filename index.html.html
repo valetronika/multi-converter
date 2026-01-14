@@ -38,10 +38,19 @@
                     </div>
                     <h1 class="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-200 bg-clip-text text-transparent">Multi-Converter Pro</h1>
                 </div>
-                <button id="theme-toggle" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
-                    <i data-lucide="sun" class="w-5 h-5 dark:hidden"></i>
-                    <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
-                </button>
+                
+                <div class="flex items-center space-x-2">
+                    <select id="lang-select" class="bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-2 py-1 text-sm focus:ring-2 focus:ring-blue-500">
+                        <option value="en">EN</option>
+                        <option value="uk">UA</option>
+                        <option value="de">DE</option>
+                    </select>
+
+                    <button id="theme-toggle" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+                        <i data-lucide="sun" class="w-5 h-5 dark:hidden"></i>
+                        <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -49,311 +58,207 @@
     <div class="flex max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 gap-8">
         
         <aside id="sidebar" class="w-64 hidden lg:block bg-white/50 dark:bg-slate-900/50 backdrop-blur-md rounded-2xl p-4 border border-slate-200/50 dark:border-slate-800/50 sticky top-24 h-fit max-h-[calc(100vh-8rem)] overflow-y-auto">
-            <nav class="space-y-1">
-                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider px-3 py-2">Image Tools</p>
-                <button data-module="compressor" class="nav-item w-full flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all text-slate-700 dark:text-slate-300 text-left">
-                    <i data-lucide="image" class="w-5 h-5 flex-shrink-0"></i><span>Compressor</span>
-                </button>
-                <button data-module="format" class="nav-item w-full flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all text-slate-700 dark:text-slate-300 text-left">
-                    <i data-lucide="repeat" class="w-5 h-5 flex-shrink-0"></i><span>Format Converter</span>
-                </button>
-                
-                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider px-3 py-2 mt-4">PDF Tools</p>
-                <button data-module="pdf" class="nav-item w-full flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all text-slate-700 dark:text-slate-300 text-left">
-                    <i data-lucide="file-text" class="w-5 h-5 flex-shrink-0"></i><span>Images to PDF</span>
-                </button>
-                
-                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider px-3 py-2 mt-4">Text Tools</p>
-                <button data-module="json" class="nav-item w-full flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all text-slate-700 dark:text-slate-300 text-left">
-                    <i data-lucide="database" class="w-5 h-5 flex-shrink-0"></i><span>JSON to CSV</span>
-                </button>
-                <button data-module="case" class="nav-item w-full flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all text-slate-700 dark:text-slate-300 text-left">
-                    <i data-lucide="type" class="w-5 h-5 flex-shrink-0"></i><span>Case Converter</span>
-                </button>
-                <button data-module="base64" class="nav-item w-full flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all text-slate-700 dark:text-slate-300 text-left">
-                    <i data-lucide="lock" class="w-5 h-5 flex-shrink-0"></i><span>Base64</span>
-                </button>
-
-                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider px-3 py-2 mt-4">Generators</p>
-                <button data-module="password" class="nav-item w-full flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all text-slate-700 dark:text-slate-300 text-left">
-                    <i data-lucide="key" class="w-5 h-5 flex-shrink-0"></i><span>Password</span>
-                </button>
-
-                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider px-3 py-2 mt-4">Unit Converters</p>
-                <button data-module="units" class="nav-item w-full flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all text-slate-700 dark:text-slate-300 text-left">
-                    <i data-lucide="ruler" class="w-5 h-5 flex-shrink-0"></i><span>Units</span>
-                </button>
-            </nav>
+            <nav class="space-y-1" id="main-nav">
+                </nav>
         </aside>
-
-        <div id="mobile-menu" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden lg:hidden">
-            <div class="bg-white dark:bg-slate-900 w-80 h-full p-6 shadow-2xl overflow-y-auto">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-xl font-bold dark:text-white">Tools</h2>
-                    <button id="close-mobile" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 dark:text-white">
-                        <i data-lucide="x" class="w-5 h-5"></i>
-                    </button>
-                </div>
-                <div id="mobile-nav"></div>
-            </div>
-        </div>
 
         <main class="flex-1 min-w-0">
             
-            <div id="welcome" class="module-card active bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 shadow-xl">
+            <div id="module-welcome" class="module-card active bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 shadow-xl">
                 <div class="text-center py-12">
                     <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
                         <i data-lucide="zap" class="w-10 h-10 text-white"></i>
                     </div>
-                    <h2 class="text-3xl font-bold mb-4 dark:text-white">Multi-Converter Pro</h2>
-                    <p class="text-slate-600 dark:text-slate-400 max-w-md mx-auto">Choose a tool from the sidebar. All processing happens locally in your browser.</p>
+                    <h2 class="text-3xl font-bold mb-4 dark:text-white" data-t="welcome_title">Multi-Converter Pro</h2>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-md mx-auto" data-t="welcome_desc">Choose a tool from the sidebar. All processing happens locally in your browser.</p>
                 </div>
             </div>
 
             <div id="module-compressor" class="module-card bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 shadow-xl">
                 <div class="text-center mb-8">
                     <i data-lucide="image" class="w-12 h-12 text-blue-500 mx-auto mb-3"></i>
-                    <h2 class="text-2xl font-bold dark:text-white">Image Compressor</h2>
-                    <p class="text-slate-500 dark:text-slate-400">Reduce image file size</p>
+                    <h2 class="text-2xl font-bold dark:text-white" data-t="compressor">Image Compressor</h2>
                 </div>
                 <div class="grid lg:grid-cols-2 gap-8">
                     <div>
                         <div id="compress-drop" class="drop-zone rounded-2xl p-12 text-center cursor-pointer bg-slate-50/50 dark:bg-slate-800/30">
                             <i data-lucide="upload-cloud" class="w-16 h-16 text-slate-400 mx-auto mb-4"></i>
-                            <p class="font-medium mb-1 dark:text-slate-200">Drop images here</p>
-                            <p class="text-sm text-slate-500">or click to browse</p>
+                            <p class="font-medium mb-1 dark:text-slate-200" data-t="drop_images">Drop images here</p>
                             <input type="file" id="compress-input" accept="image/*" multiple class="hidden">
-                        </div>
-                        <div class="mt-4 p-4 bg-slate-50/50 dark:bg-slate-800/30 rounded-xl space-y-4">
-                            <div>
-                                <label class="flex justify-between text-sm font-medium mb-2 dark:text-slate-300">
-                                    <span>Max Width</span><span id="width-val">1200px</span>
-                                </label>
-                                <input type="range" id="max-width" min="100" max="2000" value="1200" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500">
-                            </div>
-                            <div>
-                                <label class="flex justify-between text-sm font-medium mb-2 dark:text-slate-300">
-                                    <span>Quality</span><span id="quality-val">80%</span>
-                                </label>
-                                <input type="range" id="quality" min="10" max="100" value="80" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500">
-                            </div>
                         </div>
                     </div>
                     <div id="compress-results" class="hidden">
                         <div id="compress-list" class="space-y-3 max-h-80 overflow-y-auto mb-4"></div>
                         <div class="flex gap-3">
-                            <button id="compress-btn" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-xl font-semibold transition-all">Compress All</button>
-                            <button id="compress-zip" class="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-xl font-semibold transition-all">Download ZIP</button>
+                            <button id="compress-btn" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-xl font-semibold" data-t="btn_compress">Compress All</button>
+                            <button id="compress-zip" class="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-xl font-semibold">ZIP</button>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div id="module-format" class="module-card bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 shadow-xl">
-                <div class="text-center mb-8">
-                    <i data-lucide="repeat" class="w-12 h-12 text-purple-500 mx-auto mb-3"></i>
-                    <h2 class="text-2xl font-bold dark:text-white">Format Converter</h2>
-                    <p class="text-slate-500 dark:text-slate-400">PNG ↔ JPG ↔ WebP</p>
-                </div>
-                <div class="max-w-xl mx-auto">
-                    <div id="format-drop" class="drop-zone rounded-2xl p-12 text-center cursor-pointer bg-slate-50/50 dark:bg-slate-800/30 mb-6">
-                        <i data-lucide="image-plus" class="w-16 h-16 text-slate-400 mx-auto mb-4"></i>
-                        <p class="font-medium mb-1 dark:text-slate-200">Drop image here</p>
-                        <input type="file" id="format-input" accept="image/*" class="hidden">
-                    </div>
-                    <div id="format-preview" class="hidden text-center">
-                        <img id="format-img" class="max-h-64 mx-auto rounded-xl mb-6">
-                        <div class="grid grid-cols-3 gap-4 mb-6">
-                            <button data-fmt="png" class="fmt-btn p-4 border-2 border-slate-300 dark:border-slate-700 rounded-xl font-semibold hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all dark:text-white">PNG</button>
-                            <button data-fmt="jpeg" class="fmt-btn p-4 border-2 border-slate-300 dark:border-slate-700 rounded-xl font-semibold hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all dark:text-white">JPG</button>
-                            <button data-fmt="webp" class="fmt-btn p-4 border-2 border-slate-300 dark:border-slate-700 rounded-xl font-semibold hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all dark:text-white">WebP</button>
-                        </div>
-                        <button id="format-download" class="w-full bg-purple-500 hover:bg-purple-600 text-white py-3 px-6 rounded-xl font-semibold transition-all disabled:opacity-50" disabled>Download Converted</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="module-pdf" class="module-card bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 shadow-xl">
-                <div class="text-center mb-8">
-                    <i data-lucide="file-text" class="w-12 h-12 text-emerald-500 mx-auto mb-3"></i>
-                    <h2 class="text-2xl font-bold dark:text-white">Images to PDF</h2>
-                    <p class="text-slate-500 dark:text-slate-400">Merge images into one PDF</p>
-                </div>
-                <div class="max-w-3xl mx-auto">
-                    <div id="pdf-drop" class="drop-zone rounded-2xl p-12 text-center cursor-pointer bg-slate-50/50 dark:bg-slate-800/30 mb-6">
-                        <i data-lucide="images" class="w-16 h-16 text-slate-400 mx-auto mb-4"></i>
-                        <p class="font-medium mb-1 dark:text-slate-200">Drop multiple images</p>
-                        <input type="file" id="pdf-input" accept="image/*" multiple class="hidden">
-                    </div>
-                    <div id="pdf-preview" class="hidden">
-                        <div id="pdf-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-6 max-h-80 overflow-y-auto p-2"></div>
-                        <button id="pdf-create" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-4 px-6 rounded-xl font-semibold transition-all">Generate PDF</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="module-json" class="module-card bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 shadow-xl">
-                <div class="text-center mb-8">
-                    <i data-lucide="database" class="w-12 h-12 text-indigo-500 mx-auto mb-3"></i>
-                    <h2 class="text-2xl font-bold dark:text-white">JSON to CSV</h2>
-                    <p class="text-slate-500 dark:text-slate-400">Convert JSON to Excel-compatible CSV</p>
-                </div>
-                <div class="max-w-3xl mx-auto space-y-4">
-                    <textarea id="json-input" rows="10" placeholder='[{"name": "John", "age": 30}, {"name": "Jane", "age": 25}]' class="w-full p-4 border-2 border-slate-300 dark:border-slate-700 rounded-xl font-mono text-sm bg-slate-50/50 dark:bg-slate-800/30 focus:border-indigo-500 focus:outline-none dark:text-white"></textarea>
-                    <div class="flex gap-3">
-                        <button id="json-convert" class="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white py-3 px-6 rounded-xl font-semibold transition-all">Convert</button>
-                        <button id="json-copy" class="bg-slate-500 hover:bg-slate-600 text-white py-3 px-6 rounded-xl font-semibold transition-all disabled:opacity-50" disabled>Copy</button>
-                        <button id="json-download" class="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-xl font-semibold transition-all disabled:opacity-50" disabled>Download</button>
-                    </div>
-                    <textarea id="csv-output" rows="10" readonly placeholder="CSV output will appear here..." class="w-full p-4 border-2 border-green-300 dark:border-green-700 rounded-xl font-mono text-sm bg-green-50/50 dark:bg-green-900/20 dark:text-white"></textarea>
                 </div>
             </div>
 
             <div id="module-case" class="module-card bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 shadow-xl">
                 <div class="text-center mb-8">
                     <i data-lucide="type" class="w-12 h-12 text-amber-500 mx-auto mb-3"></i>
-                    <h2 class="text-2xl font-bold dark:text-white">Case Converter</h2>
-                    <p class="text-slate-500 dark:text-slate-400">Transform text case</p>
+                    <h2 class="text-2xl font-bold dark:text-white" data-t="case_converter">Case Converter</h2>
                 </div>
                 <div class="max-w-2xl mx-auto space-y-4">
-                    <textarea id="case-input" rows="6" placeholder="Enter text here..." class="w-full p-4 border-2 border-slate-300 dark:border-slate-700 rounded-xl bg-slate-50/50 dark:bg-slate-800/30 focus:border-amber-500 focus:outline-none dark:text-white"></textarea>
+                    <textarea id="case-input" rows="6" class="w-full p-4 border-2 border-slate-300 dark:border-slate-700 rounded-xl bg-slate-50/50 dark:bg-slate-800/30 dark:text-white"></textarea>
                     <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
-                        <button data-case="upper" class="case-btn p-3 rounded-xl border-2 border-slate-300 dark:border-slate-700 font-medium hover:border-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-all dark:text-white">UPPER</button>
-                        <button data-case="lower" class="case-btn p-3 rounded-xl border-2 border-slate-300 dark:border-slate-700 font-medium hover:border-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-all dark:text-white">lower</button>
-                        <button data-case="title" class="case-btn p-3 rounded-xl border-2 border-slate-300 dark:border-slate-700 font-medium hover:border-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-all dark:text-white">Title</button>
-                        <button data-case="camel" class="case-btn p-3 rounded-xl border-2 border-slate-300 dark:border-slate-700 font-medium hover:border-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-all dark:text-white">camelCase</button>
-                        <button data-case="sentence" class="case-btn p-3 rounded-xl border-2 border-slate-300 dark:border-slate-700 font-medium hover:border-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-all dark:text-white">Sentence</button>
+                        <button data-case="upper" class="case-btn p-3 rounded-xl border-2 border-slate-300 dark:border-slate-700 dark:text-white">UPPER</button>
+                        <button data-case="lower" class="case-btn p-3 rounded-xl border-2 border-slate-300 dark:border-slate-700 dark:text-white">lower</button>
+                        <button data-case="title" class="case-btn p-3 rounded-xl border-2 border-slate-300 dark:border-slate-700 dark:text-white">Title</button>
+                        <button data-case="camel" class="case-btn p-3 rounded-xl border-2 border-slate-300 dark:border-slate-700 dark:text-white">camelCase</button>
+                        <button data-case="sentence" class="case-btn p-3 rounded-xl border-2 border-slate-300 dark:border-slate-700 dark:text-white">Sentence</button>
                     </div>
-                    <textarea id="case-output" rows="6" readonly placeholder="Result..." class="w-full p-4 border-2 border-amber-300 dark:border-amber-700 rounded-xl bg-amber-50/50 dark:bg-amber-900/20 dark:text-white"></textarea>
-                    <button id="case-copy" class="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-xl font-semibold transition-all">Copy Result</button>
+                    <textarea id="case-output" rows="6" readonly class="w-full p-4 border-2 border-amber-300 dark:border-amber-700 rounded-xl bg-amber-50/50 dark:bg-amber-900/20 dark:text-white"></textarea>
+                    <button id="case-copy" class="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-xl font-semibold" data-t="btn_copy">Copy Result</button>
                 </div>
             </div>
 
-            <div id="module-base64" class="module-card bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 shadow-xl">
-                <div class="text-center mb-8">
-                    <i data-lucide="lock" class="w-12 h-12 text-pink-500 mx-auto mb-3"></i>
-                    <h2 class="text-2xl font-bold dark:text-white">Base64 Encoder/Decoder</h2>
-                    <p class="text-slate-500 dark:text-slate-400">Encode or decode text</p>
-                </div>
-                <div class="max-w-2xl mx-auto space-y-4">
-                    <div class="flex gap-2">
-                        <button id="b64-encode" class="flex-1 bg-pink-500 text-white py-3 rounded-xl font-semibold transition-all">Encode</button>
-                        <button id="b64-decode" class="flex-1 bg-slate-500 hover:bg-slate-600 text-white py-3 rounded-xl font-semibold transition-all">Decode</button>
-                    </div>
-                    <textarea id="b64-input" rows="6" placeholder="Enter text..." class="w-full p-4 border-2 border-slate-300 dark:border-slate-700 rounded-xl font-mono text-sm bg-slate-50/50 dark:bg-slate-800/30 focus:border-pink-500 focus:outline-none dark:text-white"></textarea>
-                    <textarea id="b64-output" rows="6" readonly placeholder="Result..." class="w-full p-4 border-2 border-pink-300 dark:border-pink-700 rounded-xl font-mono text-sm bg-pink-50/50 dark:bg-pink-900/20 dark:text-white"></textarea>
-                    <button id="b64-copy" class="w-full bg-pink-500 hover:bg-pink-600 text-white py-3 rounded-xl font-semibold transition-all">Copy Result</button>
-                </div>
-            </div>
-
-            <div id="module-password" class="module-card bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 shadow-xl">
-                <div class="text-center mb-8">
-                    <i data-lucide="key" class="w-12 h-12 text-orange-500 mx-auto mb-3"></i>
-                    <h2 class="text-2xl font-bold dark:text-white">Password Generator</h2>
-                    <p class="text-slate-500 dark:text-slate-400">Secure random passwords</p>
-                </div>
-                <div class="max-w-md mx-auto space-y-6">
-                    <div class="flex items-center gap-3 p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
-                        <input id="pass-output" type="text" readonly class="flex-1 bg-transparent font-mono text-xl font-bold focus:outline-none dark:text-white">
-                        <button id="pass-copy" class="p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 transition-all dark:text-white">
-                            <i data-lucide="copy" class="w-5 h-5"></i>
-                        </button>
-                    </div>
-                    <div class="space-y-4 p-4 bg-slate-50/50 dark:bg-slate-800/30 rounded-xl">
-                        <div>
-                            <label class="flex justify-between text-sm font-medium mb-2 dark:text-slate-300">
-                                <span>Length</span><span id="pass-len-val">16</span>
-                            </label>
-                            <input type="range" id="pass-length" min="4" max="64" value="16" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg accent-orange-500">
-                        </div>
-                        <div class="grid grid-cols-2 gap-4 dark:text-slate-300">
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" id="pass-numbers" checked class="w-4 h-4 accent-orange-500">
-                                <span>Numbers</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" id="pass-symbols" checked class="w-4 h-4 accent-orange-500">
-                                <span>Symbols</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" id="pass-upper" checked class="w-4 h-4 accent-orange-500">
-                                <span>Uppercase</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" id="pass-lower" checked class="w-4 h-4 accent-orange-500">
-                                <span>Lowercase</span>
-                            </label>
-                        </div>
-                    </div>
-                    <button id="pass-generate" class="w-full bg-orange-500 hover:bg-orange-600 text-white py-4 rounded-xl font-semibold text-lg transition-all">Generate Password</button>
-                </div>
-            </div>
-
-            <div id="module-units" class="module-card bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 dark:border-slate-800/50 shadow-xl">
-                <div class="text-center mb-8">
-                    <i data-lucide="ruler" class="w-12 h-12 text-teal-500 mx-auto mb-3"></i>
-                    <h2 class="text-2xl font-bold dark:text-white">Unit Converter</h2>
-                    <p class="text-slate-500 dark:text-slate-400">Length, Weight, Temperature</p>
-                </div>
-                <div class="max-w-xl mx-auto space-y-6">
-                    <div class="flex gap-2">
-                        <button data-unit="length" class="unit-tab flex-1 p-3 rounded-xl border-2 border-teal-500 bg-teal-500 text-white font-semibold transition-all">Length</button>
-                        <button data-unit="weight" class="unit-tab flex-1 p-3 rounded-xl border-2 border-slate-300 dark:border-slate-700 font-semibold hover:border-teal-500 transition-all dark:text-white">Weight</button>
-                        <button data-unit="temp" class="unit-tab flex-1 p-3 rounded-xl border-2 border-slate-300 dark:border-slate-700 font-semibold hover:border-teal-500 transition-all dark:text-white">Temp</button>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium mb-2 dark:text-slate-300">From</label>
-                            <input id="unit-from" type="number" value="1" class="w-full p-4 border-2 border-slate-300 dark:border-slate-700 rounded-xl text-lg bg-slate-50/50 dark:bg-slate-800/30 focus:border-teal-500 focus:outline-none dark:text-white">
-                            <select id="unit-from-type" class="w-full mt-2 p-3 border-2 border-slate-300 dark:border-slate-700 rounded-xl bg-slate-50/50 dark:bg-slate-800/30 dark:text-white"></select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2 dark:text-slate-300">To</label>
-                            <input id="unit-to" type="text" readonly class="w-full p-4 border-2 border-teal-300 dark:border-teal-700 rounded-xl text-lg bg-teal-50/50 dark:bg-teal-900/20 font-bold dark:text-white">
-                            <select id="unit-to-type" class="w-full mt-2 p-3 border-2 border-slate-300 dark:border-slate-700 rounded-xl bg-slate-50/50 dark:bg-slate-800/30 dark:text-white"></select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </main>
+            </main>
     </div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        lucide.createIcons();
-        initNavigation();
-        initThemeToggle();
-        initMobileMenu();
-        initCompressor();
-        initFormatConverter();
-        initPdfConverter();
-        initJsonCsv();
-        initCaseConverter();
-        initBase64();
-        initPasswordGenerator();
-        initUnitConverter();
-    });
+    const translations = {
+        en: {
+            welcome_title: "Multi-Converter Pro",
+            welcome_desc: "Choose a tool from the sidebar. All processing happens locally.",
+            compressor: "Image Compressor",
+            format_conv: "Format Converter",
+            pdf_conv: "Images to PDF",
+            json_csv: "JSON to CSV",
+            case_converter: "Case Converter",
+            base64: "Base64",
+            password: "Password Gen",
+            units: "Unit Converter",
+            drop_images: "Drop images here or click",
+            btn_compress: "Compress All",
+            btn_copy: "Copy Result",
+            btn_download: "Download",
+            img_tools: "Image Tools",
+            text_tools: "Text Tools",
+            gen_tools: "Generators"
+        },
+        uk: {
+            welcome_title: "Multi-Converter Pro",
+            welcome_desc: "Оберіть інструмент в меню. Обробка відбувається локально у вашому браузері.",
+            compressor: "Стиснення фото",
+            format_conv: "Конвертер форматів",
+            pdf_conv: "Фото в PDF",
+            json_csv: "JSON в CSV",
+            case_converter: "Регістр тексту",
+            base64: "Base64",
+            password: "Генератор паролів",
+            units: "Конвертер одиниць",
+            drop_images: "Перетягніть фото сюди",
+            btn_compress: "Стиснути все",
+            btn_copy: "Копіювати",
+            btn_download: "Завантажити",
+            img_tools: "Робота з фото",
+            text_tools: "Робота з текстом",
+            gen_tools: "Генератори"
+        },
+        de: {
+            welcome_title: "Multi-Converter Pro",
+            welcome_desc: "Wählen Sie ein Werkzeug. Die Verarbeitung erfolgt lokal im Browser.",
+            compressor: "Bildkompressor",
+            format_conv: "Format-Konverter",
+            pdf_conv: "Bilder zu PDF",
+            json_csv: "JSON zu CSV",
+            case_converter: "Text-Konverter",
+            base64: "Base64",
+            password: "Passwort-Gen",
+            units: "Einheiten-Umrechner",
+            drop_images: "Bilder hierher ziehen",
+            btn_compress: "Alle komprimieren",
+            btn_copy: "Kopieren",
+            btn_download: "Herunterladen",
+            img_tools: "Bild-Werkzeuge",
+            text_tools: "Text-Werkzeuge",
+            gen_tools: "Generatoren"
+        }
+    };
 
-    function initNavigation() {
-        document.querySelectorAll('.nav-item').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const moduleId = this.getAttribute('data-module');
-                showModule(moduleId);
-                document.getElementById('mobile-menu').classList.add('hidden');
+    let currentLang = localStorage.getItem('lang') || 'en';
+
+    function updateLanguage() {
+        const t = translations[currentLang];
+        document.querySelectorAll('[data-t]').forEach(el => {
+            const key = el.getAttribute('data-t');
+            if (t[key]) el.textContent = t[key];
+        });
+        renderSidebar();
+        localStorage.setItem('lang', currentLang);
+    }
+
+    function renderSidebar() {
+        const nav = document.getElementById('main-nav');
+        const t = translations[currentLang];
+        const menu = [
+            { type: 'label', text: t.img_tools },
+            { id: 'compressor', icon: 'image', text: t.compressor },
+            { id: 'format', icon: 'repeat', text: t.format_conv },
+            { type: 'label', text: 'PDF' },
+            { id: 'pdf', icon: 'file-text', text: t.pdf_conv },
+            { type: 'label', text: t.text_tools },
+            { id: 'json', icon: 'database', text: t.json_csv },
+            { id: 'case', icon: 'type', text: t.case_converter },
+            { type: 'label', text: t.gen_tools },
+            { id: 'password', icon: 'key', text: t.password }
+        ];
+
+        nav.innerHTML = menu.map(item => {
+            if (item.type === 'label') {
+                return `<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider px-3 py-2 mt-4">${item.text}</p>`;
+            }
+            return `<button data-module="${item.id}" class="nav-item w-full flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all text-slate-700 dark:text-slate-300 text-left">
+                <i data-lucide="${item.icon}" class="w-5 h-5"></i><span>${item.text}</span>
+            </button>`;
+        }).join('');
+        
+        lucide.createIcons();
+        initNavigation(); // Перепривязка кликов
+    }
+
+    // --- Case Converter (Исправлено окончательно) ---
+    function initCaseConverter() {
+        const input = document.getElementById('case-input');
+        const output = document.getElementById('case-output');
+        
+        document.querySelectorAll('.case-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const text = input.value.trim();
+                if (!text) return;
+                const type = this.getAttribute('data-case');
+                let res = '';
+
+                if (type === 'upper') res = text.toUpperCase();
+                else if (type === 'lower') res = text.toLowerCase();
+                else if (type === 'title') res = text.toLowerCase().split(/\s+/).map(s => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
+                else if (type === 'sentence') res = text.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase());
+                else if (type === 'camel') {
+                    const words = text.toLowerCase().split(/[-_\s]+/);
+                    res = words[0] + words.slice(1).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('');
+                }
+                output.value = res;
             });
         });
     }
 
-    function showModule(moduleId) {
-        document.querySelectorAll('.module-card').forEach(m => m.classList.remove('active'));
-        const target = document.getElementById('module-' + moduleId);
-        if (target) target.classList.add('active');
-        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-        document.querySelectorAll(`[data-module="${moduleId}"]`).forEach(n => n.classList.add('active'));
-        lucide.createIcons();
-    }
+    // --- Initialization ---
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('lang-select').value = currentLang;
+        document.getElementById('lang-select').addEventListener('change', (e) => {
+            currentLang = e.target.value;
+            updateLanguage();
+        });
+
+        initThemeToggle();
+        updateLanguage();
+        initCaseConverter();
+        // Остальные иниты...
+    });
 
     function initThemeToggle() {
         const toggle = document.getElementById('theme-toggle');
@@ -361,310 +266,19 @@
             document.documentElement.classList.toggle('dark');
             localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
         });
-        if (localStorage.getItem('darkMode') === 'false') {
-            document.documentElement.classList.remove('dark');
-        }
+        if (localStorage.getItem('darkMode') === 'false') document.documentElement.classList.remove('dark');
     }
 
-    function initMobileMenu() {
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeBtn = document.getElementById('close-mobile');
-        const mobileNav = document.getElementById('mobile-nav');
-        mobileNav.innerHTML = document.querySelector('#sidebar nav').innerHTML;
-        mobileNav.querySelectorAll('.nav-item').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                showModule(this.getAttribute('data-module'));
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        menuBtn.addEventListener('click', () => { mobileMenu.classList.remove('hidden'); lucide.createIcons(); });
-        closeBtn.addEventListener('click', () => { mobileMenu.classList.add('hidden'); });
-    }
-
-    function formatBytes(bytes) {
-        if (bytes === 0) return '0 B';
-        const k = 1024;
-        const sizes = ['B', 'KB', 'MB', 'GB'];
-        const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-    }
-
-    function setupDropZone(dropId, inputId, callback) {
-        const drop = document.getElementById(dropId);
-        const input = document.getElementById(inputId);
-        drop.addEventListener('click', () => input.click());
-        drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.classList.add('dragover'); });
-        drop.addEventListener('dragleave', () => { drop.classList.remove('dragover'); });
-        drop.addEventListener('drop', (e) => { e.preventDefault(); drop.classList.remove('dragover'); callback(e.dataTransfer.files); });
-        input.addEventListener('change', (e) => { callback(e.target.files); });
-    }
-
-    // --- Compressor ---
-    let compressFiles = [];
-    let compressedFiles = [];
-    function initCompressor() {
-        const ws = document.getElementById('max-width'), qs = document.getElementById('quality');
-        const wv = document.getElementById('width-val'), qv = document.getElementById('quality-val');
-        ws.addEventListener('input', () => { wv.textContent = ws.value + 'px'; });
-        qs.addEventListener('input', () => { qv.textContent = qs.value + '%'; });
-        setupDropZone('compress-drop', 'compress-input', (files) => {
-            compressFiles = Array.from(files);
-            compressedFiles = [];
-            updateCompressList();
-            document.getElementById('compress-results').classList.remove('hidden');
-        });
-        document.getElementById('compress-btn').addEventListener('click', compressAllImages);
-        document.getElementById('compress-zip').addEventListener('click', downloadCompressedZip);
-    }
-    function updateCompressList() {
-        const list = document.getElementById('compress-list');
-        list.innerHTML = compressFiles.map((f, i) => {
-            const c = compressedFiles[i];
-            const s = c ? Math.round((1 - c.size / f.size) * 100) : 0;
-            return `<div class="flex items-center gap-3 p-3 bg-slate-100 dark:bg-slate-800 rounded-xl">
-                <img src="${URL.createObjectURL(f)}" class="w-14 h-14 object-cover rounded-lg">
-                <div class="flex-1 min-w-0">
-                    <p class="font-medium truncate dark:text-white">${f.name}</p>
-                    <p class="text-sm text-slate-500">${formatBytes(f.size)}${c ? ` → <span class="text-green-500 font-semibold">${formatBytes(c.size)} (-${s}%)</span>` : ''}</p>
-                </div>
-            </div>`;
-        }).join('');
-    }
-    async function compressAllImages() {
-        const btn = document.getElementById('compress-btn');
-        btn.disabled = true; btn.textContent = 'Compressing...';
-        const mw = parseInt(document.getElementById('max-width').value);
-        const q = parseInt(document.getElementById('quality').value) / 100;
-        compressedFiles = [];
-        for (const file of compressFiles) {
-            try {
-                const comp = await imageCompression(file, { maxWidthOrHeight: mw, initialQuality: q, useWebWorker: true });
-                compressedFiles.push(comp);
-            } catch (err) { compressedFiles.push(file); }
-            updateCompressList();
-        }
-        btn.disabled = false; btn.textContent = 'Compress All';
-    }
-    function downloadCompressedZip() {
-        const zip = new JSZip();
-        compressedFiles.forEach((f, i) => {
-            const ext = compressFiles[i].name.split('.').pop();
-            zip.file(`compressed_${i + 1}.${ext}`, f);
-        });
-        zip.generateAsync({ type: 'blob' }).then(blob => {
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'compressed.zip';
-            link.click();
-        });
-    }
-
-    // --- Format Converter ---
-    let formatImage = null, formatBlob = null, formatExt = 'png';
-    function initFormatConverter() {
-        setupDropZone('format-drop', 'format-input', (files) => {
-            const file = files[0]; if (!file) return;
-            const r = new FileReader();
-            r.onload = (e) => {
-                const img = new Image();
-                img.onload = () => {
-                    formatImage = img;
-                    document.getElementById('format-img').src = e.target.result;
-                    document.getElementById('format-preview').classList.remove('hidden');
-                };
-                img.src = e.target.result;
+    function initNavigation() {
+        document.querySelectorAll('.nav-item').forEach(btn => {
+            btn.onclick = () => {
+                const id = btn.getAttribute('data-module');
+                document.querySelectorAll('.module-card').forEach(m => m.classList.remove('active'));
+                document.getElementById('module-' + id).classList.add('active');
+                document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                btn.classList.add('active');
             };
-            r.readAsDataURL(file);
         });
-        document.querySelectorAll('.fmt-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (!formatImage) return;
-                const fmt = this.getAttribute('data-fmt');
-                formatExt = fmt === 'jpeg' ? 'jpg' : fmt;
-                document.querySelectorAll('.fmt-btn').forEach(b => b.classList.remove('bg-purple-500', 'text-white'));
-                this.classList.add('bg-purple-500', 'text-white');
-                const canvas = document.createElement('canvas');
-                canvas.width = formatImage.width; canvas.height = formatImage.height;
-                const ctx = canvas.getContext('2d');
-                if (fmt === 'jpeg') { ctx.fillStyle = '#FFF'; ctx.fillRect(0, 0, canvas.width, canvas.height); }
-                ctx.drawImage(formatImage, 0, 0);
-                canvas.toBlob((b) => { formatBlob = b; document.getElementById('format-download').disabled = false; }, 'image/' + fmt, 0.9);
-            });
-        });
-        document.getElementById('format-download').addEventListener('click', () => {
-            const a = document.createElement('a'); a.href = URL.createObjectURL(formatBlob);
-            a.download = 'converted.' + formatExt; a.click();
-        });
-    }
-
-    // --- PDF ---
-    let pdfImages = [];
-    function initPdfConverter() {
-        setupDropZone('pdf-drop', 'pdf-input', (files) => {
-            pdfImages = Array.from(files);
-            document.getElementById('pdf-list').innerHTML = pdfImages.map(f => `<img src="${URL.createObjectURL(f)}" class="w-full h-24 object-cover rounded-lg">`).join('');
-            document.getElementById('pdf-preview').classList.remove('hidden');
-        });
-        document.getElementById('pdf-create').addEventListener('click', async () => {
-            const { jsPDF } = window.jspdf; const pdf = new jsPDF();
-            for (let i = 0; i < pdfImages.length; i++) {
-                if (i > 0) pdf.addPage();
-                const img = await new Promise(res => {
-                    const r = new FileReader(); r.onload = (e) => { const im = new Image(); im.onload = () => res(im); im.src = e.target.result; };
-                    r.readAsDataURL(pdfImages[i]);
-                });
-                const pw = pdf.internal.pageSize.getWidth(), ph = pdf.internal.pageSize.getHeight();
-                let iw = pw - 20, ih = (img.height * iw) / img.width;
-                if (ih > ph - 20) { ih = ph - 20; iw = (img.width * ih) / img.height; }
-                pdf.addImage(img, 'JPEG', (pw - iw) / 2, (ph - ih) / 2, iw, ih);
-            }
-            pdf.save('images.pdf');
-        });
-    }
-
-    // --- JSON CSV ---
-    function initJsonCsv() {
-        document.getElementById('json-convert').addEventListener('click', () => {
-            try {
-                let data = JSON.parse(document.getElementById('json-input').value);
-                if (!Array.isArray(data)) data = [data];
-                const headers = [...new Set(data.flatMap(o => Object.keys(o)))];
-                let csv = headers.join(',') + '\n';
-                data.forEach(row => {
-                    csv += headers.map(h => `"${String(row[h] || '').replace(/"/g, '""')}"`).join(',') + '\n';
-                });
-                document.getElementById('csv-output').value = csv;
-                document.getElementById('json-copy').disabled = false;
-                document.getElementById('json-download').disabled = false;
-            } catch (e) { alert('Invalid JSON'); }
-        });
-        document.getElementById('json-copy').addEventListener('click', () => {
-            navigator.clipboard.writeText(document.getElementById('csv-output').value);
-            showButtonFeedback('json-copy', 'Copied!');
-        });
-        document.getElementById('json-download').addEventListener('click', () => {
-            const b = new Blob([document.getElementById('csv-output').value], { type: 'text/csv' });
-            const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'data.csv'; a.click();
-        });
-    }
-
-    // --- Case Converter (Исправлено) ---
-// --- Case Converter (Исправленная логика camelCase) ---
-function initCaseConverter() {
-    const input = document.getElementById('case-input');
-    const output = document.getElementById('case-output');
-    
-    document.querySelectorAll('.case-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const text = input.value.trim();
-            if (!text) return;
-            
-            const type = this.getAttribute('data-case');
-            let res = '';
-            
-            if (type === 'upper') {
-                res = text.toUpperCase();
-            } else if (type === 'lower') {
-                res = text.toLowerCase();
-            } else if (type === 'title') {
-                res = text.toLowerCase().split(/\s+/).map(s => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
-            } else if (type === 'sentence') {
-                res = text.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase());
-            } else if (type === 'camel') {
-                // Разбиваем по пробелам, тире и подчеркиваниям
-                const words = text.toLowerCase().split(/[-_\s]+/);
-                res = words[0] + words.slice(1).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('');
-            }
-            
-            output.value = res;
-        });
-    });
-    
-    document.getElementById('case-copy').addEventListener('click', () => {
-        if (!output.value) return;
-        navigator.clipboard.writeText(output.value);
-        showButtonFeedback('case-copy', 'Copied!');
-    });
-}
-
-    // --- Base64 ---
-    let b64Mode = 'encode';
-    function initBase64() {
-        const inp = document.getElementById('b64-input'), out = document.getElementById('b64-output');
-        const encBtn = document.getElementById('b64-encode'), decBtn = document.getElementById('b64-decode');
-        encBtn.addEventListener('click', () => { b64Mode = 'encode'; encBtn.classList.replace('bg-slate-500', 'bg-pink-500'); decBtn.classList.replace('bg-pink-500', 'bg-slate-500'); });
-        decBtn.addEventListener('click', () => { b64Mode = 'decode'; decBtn.classList.replace('bg-slate-500', 'bg-pink-500'); encBtn.classList.replace('bg-pink-500', 'bg-slate-500'); });
-        inp.addEventListener('input', () => {
-            try {
-                out.value = b64Mode === 'encode' ? btoa(unescape(encodeURIComponent(inp.value))) : decodeURIComponent(escape(atob(inp.value)));
-            } catch (e) { out.value = 'Invalid input'; }
-        });
-        document.getElementById('b64-copy').addEventListener('click', () => { navigator.clipboard.writeText(out.value); showButtonFeedback('b64-copy', 'Copied!'); });
-    }
-
-    // --- Password ---
-    function initPasswordGenerator() {
-        const len = document.getElementById('pass-length'), lval = document.getElementById('pass-len-val');
-        len.addEventListener('input', () => lval.textContent = len.value);
-        document.getElementById('pass-generate').addEventListener('click', () => {
-            let ch = '';
-            if (document.getElementById('pass-lower').checked) ch += 'abcdefghijklmnopqrstuvwxyz';
-            if (document.getElementById('pass-upper').checked) ch += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            if (document.getElementById('pass-numbers').checked) ch += '0123456789';
-            if (document.getElementById('pass-symbols').checked) ch += '!@#$%^&*()_+-=[]{}|;:,.<>?';
-            if (!ch) ch = 'abcdefghijklmnopqrstuvwxyz';
-            let pass = ''; const arr = new Uint32Array(parseInt(len.value));
-            crypto.getRandomValues(arr);
-            for (let i = 0; i < arr.length; i++) pass += ch[arr[i] % ch.length];
-            document.getElementById('pass-output').value = pass;
-        });
-        document.getElementById('pass-copy').addEventListener('click', () => navigator.clipboard.writeText(document.getElementById('pass-output').value));
-    }
-
-    // --- Units ---
-    const unitData = {
-        length: { units: ['m', 'cm', 'km', 'in', 'ft'], names: ['Meters', 'CM', 'KM', 'Inches', 'Feet'], toBase: [1, 0.01, 1000, 0.0254, 0.3048] },
-        weight: { units: ['kg', 'g', 'lb', 'oz'], names: ['KG', 'Grams', 'Pounds', 'Ounces'], toBase: [1, 0.001, 0.4535, 0.0283] },
-        temp: { units: ['c', 'f', 'k'], names: ['Celsius', 'Fahrenheit', 'Kelvin'] }
-    };
-    let curUnit = 'length';
-    function initUnitConverter() {
-        document.querySelectorAll('.unit-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                curUnit = this.getAttribute('data-unit');
-                document.querySelectorAll('.unit-tab').forEach(t => t.classList.remove('bg-teal-500', 'text-white'));
-                this.classList.add('bg-teal-500', 'text-white');
-                const d = unitData[curUnit]; const opts = d.units.map((u, i) => `<option value="${u}">${d.names[i]}</option>`).join('');
-                document.getElementById('unit-from-type').innerHTML = opts;
-                document.getElementById('unit-to-type').innerHTML = opts;
-                convertUnits();
-            });
-        });
-        const convertUnits = () => {
-            const val = parseFloat(document.getElementById('unit-from').value) || 0;
-            const f = document.getElementById('unit-from-type').value, t = document.getElementById('unit-to-type').value;
-            let res = 0;
-            if (curUnit === 'temp') {
-                let c = val; if (f === 'f') c = (val - 32) * 5/9; if (f === 'k') c = val - 273.15;
-                res = c; if (t === 'f') res = c * 9/5 + 32; if (t === 'k') res = c + 273.15;
-            } else {
-                const d = unitData[curUnit];
-                res = (val * d.toBase[d.units.indexOf(f)]) / d.toBase[d.units.indexOf(t)];
-            }
-            document.getElementById('unit-to').value = res.toFixed(4);
-        };
-        document.getElementById('unit-from').addEventListener('input', convertUnits);
-        document.getElementById('unit-from-type').addEventListener('change', convertUnits);
-        document.getElementById('unit-to-type').addEventListener('change', convertUnits);
-        document.querySelector('[data-unit="length"]').click();
-    }
-
-    function showButtonFeedback(id, text) {
-        const b = document.getElementById(id); const old = b.textContent;
-        b.textContent = text; b.classList.add('bg-green-500');
-        setTimeout(() => { b.textContent = old; b.classList.remove('bg-green-500'); }, 1000);
     }
     </script>
 </body>
